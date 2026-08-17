@@ -90,11 +90,14 @@
   <section id="galerija" class="section">
     <div class="container">
       <h2>Galerija</h2>
+      <p class="placeholder-note">⚠️ Ovde treba dodati prave fotografije sa časova i druženja (Facebook/Instagram) — trenutno su prikazani placeholderi.</p>
       <div class="gallery">
         <div class="gallery-item"><img src="assets/images/engleski.jfif" alt="Učenje engleskog jezika kroz igru u Playground ABC" loading="lazy"></div>
         <div class="gallery-item"><img src="assets/images/priprema.jfif" alt="Flajer — priprema za malu maturu, srpski jezik i matematika" loading="lazy"></div>
-        <div class="gallery-item"><img src="assets/images/druzenje1.jfif" alt="Atmosfera u školi" loading="lazy"></div>
-        <div class="gallery-item"><img src="assets/images/druzenje2.jfif" alt="Noć veštica" loading="lazy"></div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
+        <div class="gallery-item">📷</div>
       </div>
     </div>
   </section>
@@ -134,7 +137,10 @@
 </footer>
 
 <dialog id="upis-dialog" class="upis-dialog">
-  <form method="dialog" id="upis-form" class="upis-form">
+  <form id="upis-form" class="upis-form" action="https://formsubmit.co/jsmiljkovic94@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Nova prijava — Playground ABC">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <button type="button" class="upis-close" id="upis-close-btn" aria-label="Zatvori">✕</button>
     <h2>Upis deteta</h2>
 
@@ -168,7 +174,7 @@
     </div>
 
     <div class="upis-actions">
-      <button type="submit" class="btn btn-primary">Pošalji</button>
+      <button type="submit" class="btn btn-primary" id="upis-submit-btn">Pošalji</button>
     </div>
 
     <div class="upis-success" id="upis-success" hidden>
