@@ -31,14 +31,38 @@ upisDialog.addEventListener("click", (event) => {
   }
 });
 
+const upisSubmitBtn = document.getElementById("upis-submit-btn");
+
 upisForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!upisForm.reportValidity()) {
     return;
   }
-  upisFields.hidden = true;
-  upisActions.hidden = true;
-  upisSuccess.hidden = false;
+
+  upisSubmitBtn.disabled = true;
+  upisSubmitBtn.textContent = "Slanje...";
+
+  fetch(upisForm.action, {
+    method: "POST",
+    headers: { Accept: "application/json" },
+    body: new FormData(upisForm),
+  })
+    .then((response) => response.json().catch(() => ({})).then((data) => ({ response, data })))
+    .then(({ response, data }) => {
+      if (!response.ok || data.success !== true) {
+        throw new Error(data.message || "Slanje nije uspelo");
+      }
+      upisFields.hidden = true;
+      upisActions.hidden = true;
+      upisSuccess.hidden = false;
+    })
+    .catch(() => {
+      alert("Došlo je do greške pri slanju. Pokušajte ponovo ili nas kontaktirajte direktno telefonom/mejlom.");
+    })
+    .finally(() => {
+      upisSubmitBtn.disabled = false;
+      upisSubmitBtn.textContent = "Pošalji";
+    });
 });
 
 upisSuccessCloseBtn.addEventListener("click", () => {
