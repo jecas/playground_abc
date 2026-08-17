@@ -328,6 +328,11 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   text-align: center;
   padding: 8px 0;
 }
+.upis-fields[hidden],
+.upis-actions[hidden],
+.upis-success[hidden] {
+  display: none;
+}
 .upis-success p {
   margin: 0 0 20px;
   color: var(--ink);
